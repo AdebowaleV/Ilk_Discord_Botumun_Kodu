@@ -14,6 +14,13 @@ def gen_pass(pass_length):
         password += random.choice(elements)
 
     return password
+def yazi_tura():
+    para = random.randint(0, 1)
+    if para == 0:
+        return "YAZI"
+    else:
+        return "TURA"
+
 @client.event
 async def on_ready():
     print(f'We have logged in as {client.user}')
@@ -29,6 +36,9 @@ async def on_message(message):
         await message.channel.send("\\U0001f642")
     elif message.content.startswith('Ronaldo is the GOAT!'):
         await message.channel.send("Messi is the GOAT!")
+    elif message.content.startswith('$yazi_tura'):
+        result = yazi_tura()
+        await message.channel.send(result)
     else:
         await message.channel.send(message.content)
 
